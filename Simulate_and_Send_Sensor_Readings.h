@@ -15,3 +15,5 @@ struct BatteryHealthParameters {
     float* dischargingVoltage;
     int* stateOfHealth;
 };
+
+void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters *myBattery);
