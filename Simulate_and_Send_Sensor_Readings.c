@@ -20,12 +20,11 @@ int* simulateBatteryParameterIntegerValues(int NumberOfReadings, int maximumValu
     return arrayToStoreIntegerValues;
 }
 
-int simulateSensorReadings(struct BatteryHealthParameters *myBattery) {
+void simulateSensorReadings(struct BatteryHealthParameters *myBattery) {
     srand(time(NULL));
     myBattery->batteryTemperatureInCelsius = simulateBatteryParameterFloatValues((int)NUMBER_OF_READINGS,(float)MAXIMUM_BATTERYTEMPERATURE);
     myBattery->dischargingVoltage = simulateBatteryParameterFloatValues((int)NUMBER_OF_READINGS,(float)MAXIMUM_DISCHARGE_VOLTAGE);
     myBattery->stateOfHealth = simulateBatteryParameterIntegerValues((int)NUMBER_OF_READINGS,(float)MAXIMUM_SOH);
-    return 1;
 }
 
 void formatAndPrintToConsole(struct BatteryHealthParameters *batteryHealth) {
@@ -35,7 +34,7 @@ void formatAndPrintToConsole(struct BatteryHealthParameters *batteryHealth) {
 }
 
 void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters *myBattery) {
-    int simulationStatus = simulateSensorReadings(myBattery);
+    (void) simulateSensorReadings(myBattery);
     (void) formatAndPrintToConsole(myBattery);
     free(arrayToStoreFloatValues);
     free(arrayToStoreIntegerValues);
