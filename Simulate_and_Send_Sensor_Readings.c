@@ -1,3 +1,5 @@
+#include "Simulate_and_Send_Sensor_Readings.h"
+
 float* simulateBatteryParameterFloatValues(int NumberOfReadings, float maximumValue) {
     int loopCounter = 0;
     arrayToStoreFloatValues = (float*) calloc(NumberOfReadings, sizeof(maximumValue));
