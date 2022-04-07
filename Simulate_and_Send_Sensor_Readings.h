@@ -16,4 +16,4 @@ struct BatteryHealthParameters {
     int* stateOfHealth;
 };
 
-void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters *myBattery);
+void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters*);
