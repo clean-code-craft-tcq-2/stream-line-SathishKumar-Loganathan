@@ -7,9 +7,6 @@
 #define MAXIMUM_DISCHARGE_VOLTAGE 32.25f 
 #define MAXIMUM_SOH 90
 
-float* arrayToStoreFloatValues;
-int *arrayToStoreIntegerValues;
-
 struct BatteryHealthParameters {
     float* batteryTemperatureInCelsius;
     float* dischargingVoltage;
