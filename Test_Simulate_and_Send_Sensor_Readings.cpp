@@ -12,3 +12,14 @@ TEST_CASE("Tests to check if float values are Simulated correctly") {
         REQUIRE(BatteryParameterValues[i] <= maximumValue);
     }
 }
+
+TEST_CASE("Tests to check if integer values are Simulated correctly") {
+    int NumberOfReadings = 15;
+    int maximumValue = 30;
+    int *BatteryParameterValues;
+    BatteryParameterValues = simulateBatteryParameterIntegerValues(NumberOfReadings,maximumValue);
+    
+    for(int i=0; i<NumberOfReadings; i++) {
+        REQUIRE(BatteryParameterValues[i] <= maximumValue);
+    }
+}
