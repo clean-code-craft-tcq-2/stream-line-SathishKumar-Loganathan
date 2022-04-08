@@ -14,3 +14,7 @@ struct BatteryHealthParameters {
 };
 
 void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters*);
+float* simulateBatteryParameterFloatValues(int, float);
+int* simulateBatteryParameterIntegerValues(int, int);
+void formatAndPrintToConsole(struct BatteryHealthParameters*);
+int simulateSensorReadings(struct BatteryHealthParameters*);
