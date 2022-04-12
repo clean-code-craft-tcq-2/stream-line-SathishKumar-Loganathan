@@ -39,6 +39,7 @@ void formatAndPrintToConsole(struct BatteryHealthParameters *batteryHealth) {
 void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters *myBattery) {
     (void) simulateSensorReadings(myBattery);
     (void) formatAndPrintToConsole(myBattery);
-    free(arrayToStoreFloatValues);
-    free(arrayToStoreIntegerValues);
+    free(myBattery->batteryTemperatureInCelsius);
+    free(myBattery->dischargingVoltage);
+    free(myBattery->stateOfHealth);
 }
