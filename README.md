@@ -1,3 +1,47 @@
+# Reciever
+
+## Overview
+
+![Receiver Overview](/docs/images/reciever-overview.png)
+
+## Test Specification
+
+Create a method 'interpretBatteryParametersAndComputeStatistics'.
+
+  1) This method takes up stream of formatted battery parameters (Temperature, Voltage, State of health) seperated by comma as input and compute min, max of the input stream and moving average of last 5 values for all battery parameters and prints on console.\
+    Eg:\
+	Formatted Input Stream:\
+	34, 23, 50\
+	12, 12, 70
+
+  2) Allow this method to parse the CSV formatted input stream and store each of the battery parameters input as an array.\
+     Note: Temperature and Voltage will be an array of float \
+	   State of health will be an array of int 
+
+  3) Allow this method to compute Minimum Value of the input stream. Input values can either int or float.\
+     Eg:\
+	34, 23.5, 12.8, 40, 3.92
+
+  4) Allow this method to compute Maximum Value of the input stream. Input values can either int or float. \
+     Eg:\
+	34, 23.5, 12.8, 40, 3.92
+
+  5) Allow this method to compute moving average of last 5 values. Input values can either int or float. \
+      Eg: \
+	34, 23.5, 12.8, 40, 3.92, 22, 9.67, 33 
+
+  6) This method should print computed min, max and average of all the battery parameters (i.e Temp, Voltage and State of health) \
+	i.e \
+	Parameter: Temperature \
+	Min Value: 9.67 \
+	Max Value: 40 \
+	Moving Average: 21.71
+
+## Initial Sequence Diagram / Code Flow
+
+![Initial Code Flow](/docs/images/InitialReceiverSequence.png)
+
+
 # Streaming BMS Data
 
 This project is about sending and receiving BMS data.
