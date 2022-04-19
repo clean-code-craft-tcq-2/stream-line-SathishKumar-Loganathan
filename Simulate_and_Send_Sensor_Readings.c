@@ -33,7 +33,7 @@ void simulateSensorReadings(struct BatteryHealthParameters *myBattery) {
 void formatAndPrintToConsole(struct BatteryHealthParameters *batteryHealth) {
     int loopCounter = 0;
     for(loopCounter=0;loopCounter<50;loopCounter++)
-        printf("%.2f %.2f %d\n",batteryHealth->batteryTemperatureInCelsius[loopCounter],batteryHealth->dischargingVoltage[loopCounter],batteryHealth->stateOfHealth[loopCounter]);
+        printf("%.2f,%.2f,%d\n",batteryHealth->batteryTemperatureInCelsius[loopCounter],batteryHealth->dischargingVoltage[loopCounter],batteryHealth->stateOfHealth[loopCounter]);
 }
 
 void Simulate_and_Send_Sensor_Readings_for_BMS(struct BatteryHealthParameters *myBattery) {
