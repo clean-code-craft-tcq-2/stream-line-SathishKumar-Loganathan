@@ -23,3 +23,8 @@ TEST_CASE("Tests to check if integer values are Simulated correctly") {
         REQUIRE(BatteryParameterValues[i] <= maximumValue);
     }
 }
+
+TEST_CASE("Print Sender values when executed") {
+    struct BatteryHealthParameters myBattery;
+    Simulate_and_Send_Sensor_Readings_for_BMS(&myBattery);
+}
