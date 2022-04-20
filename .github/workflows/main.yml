@@ -15,7 +15,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y gcovr
     - name: build sender
-      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o parameterValueSender *.c*
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o parameterValueSender Sender/*.c*
     - name: build receiver
       run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -I ./receiver receiver/*.c* -o parameterValueReceiver
       
