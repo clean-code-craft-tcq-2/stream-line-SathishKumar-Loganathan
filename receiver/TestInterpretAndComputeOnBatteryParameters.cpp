@@ -20,6 +20,7 @@ void readInputValuesFromFile(string inputFileName, char formattedBatteryParamete
 	if (!input_file.is_open()) {
 		cerr << "Could not open the input file" << endl;
 	}
+	cout << " Reading from Input file" << endl;
 	while (input_file.getline(inputValueRead, maxChar)){
 		strcpy(formattedBatteryParameters[i], inputValueRead);	
 		i++;
@@ -27,7 +28,17 @@ void readInputValuesFromFile(string inputFileName, char formattedBatteryParamete
 	input_file.close();
 }
 
-SCENARIO("Compute statistics on formatted battery parameters") {
+void readFromStandardInput(char formattedBatteryParameters[50][30]){
+	int i=0;
+	char readValue[30];
+	cout << " Reading from Standard Input" << endl;
+	while (std::cin.getline(readValue, 30)){
+		std::strcpy(formattedBatteryParameters[i], readValue); 
+		i++;
+	}	
+}
+
+SCENARIO("Compute statistics on formatted battery parameters from the input file with battery parameter values") {
 	size_t numberOfSamples = 0;
 	int numberOfparameters = 3;
 	struct parameterStatisticalData expectedOutput[numberOfparameters];
@@ -38,7 +49,7 @@ SCENARIO("Compute statistics on formatted battery parameters") {
 		
 		// Input Values
 		readInputValuesFromFile("InputValues.txt", formattedBatteryParameters);
-		
+	
 		// Size of Input Samples
 		numberOfSamples = sizeof(formattedBatteryParameters) / sizeof(formattedBatteryParameters[0]);
 
@@ -69,3 +80,26 @@ SCENARIO("Compute statistics on formatted battery parameters") {
 	}
 }
 
+SCENARIO("Compute statistics on formatted battery parameters on random values from receiver") {
+	size_t numberOfSamples = 0;
+	int numberOfparameters = 3;
+	struct parameterStatisticalData ParameterStatisticalData[numberOfparameters];
+	char formattedBatteryParameters[50][30];
+
+	GIVEN( "Randomly generated CSV fomatted battery parameters from the receiver"){
+		
+		// Input Values
+		readFromStandardInput(formattedBatteryParameters);
+		
+		// Size of Input Samples
+		numberOfSamples = sizeof(formattedBatteryParameters) / sizeof(formattedBatteryParameters[0]);
+
+		WHEN ( "interpretBatteryParametersAndComputeStatistics functions is called" ) {
+			interpretBatteryParametersAndComputeStatistics(formattedBatteryParameters, numberOfSamples, ParameterStatisticalData);
+
+			THEN ( "Check for the behaviour and state of print function" ) {
+				 SUCCEED("Required Statistic is computed and printed");
+			}
+		}
+	}
+}

@@ -21,8 +21,8 @@ jobs:
       
     - name: run sender
       run: ./parameterValueSender
-    - name: run receiver
-      run: ./parameterValueReceiver
+    - name: run sender | receiver
+      run: ./parameterValueSender | ./parameterValueReceiver
 
     - name: collect coverage
       run: gcovr --gcov-exclude=".*Test.*" --gcov-exclude=".*catch.*" -r . --html --html-details -o coverage.html --print-summary
