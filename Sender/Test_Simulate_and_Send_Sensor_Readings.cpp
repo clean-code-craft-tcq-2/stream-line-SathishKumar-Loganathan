@@ -6,7 +6,7 @@ TEST_CASE("Tests to check if float values are Simulated correctly") {
     int NoOfReadings = 10;
     float maxValueinFloat = 50.25;
     float *BatteryParameter = simulateBatteryParameterFloatValues(NoOfReadings,maxValueinFloat);
-    for(int i=0; i<NumberOfReadings; i++) {
+    for(int i=0; i<NoOfReadings; i++) {
         REQUIRE(BatteryParameter[i] <= maxValueinFloat);
     }
 }
