@@ -3,11 +3,11 @@
 #include "../catch.hpp"
 
 TEST_CASE("Tests to check if float values are Simulated correctly") {
-    int NumberOfReadings = 10;
-    float maximumValue = 50.25;
-    float *BatteryParameterValues = simulateBatteryParameterFloatValues(NumberOfReadings,maximumValue);
+    int NoOfReadings = 10;
+    float maxValueinFloat = 50.25;
+    float *BatteryParameter = simulateBatteryParameterFloatValues(NoOfReadings,maxValueinFloat);
     for(int i=0; i<NumberOfReadings; i++) {
-        REQUIRE(BatteryParameterValues[i] <= maximumValue);
+        REQUIRE(BatteryParameter[i] <= maxValueinFloat);
     }
 }
 
