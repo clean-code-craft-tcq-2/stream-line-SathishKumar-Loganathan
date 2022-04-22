@@ -1,0 +1,35 @@
+name: Build and Run
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: install coverage tool
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y gcovr
+    - name: build sender
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -o parameterValueSender Sender/*.c*
+    - name: build receiver
+      run: g++ -Wall -Wextra -fprofile-arcs -ftest-coverage -I ./receiver receiver/*.c* -o parameterValueReceiver
+      
+    - name: run sender
+      run: ./parameterValueSender
+    - name: run sender | receiver
+      run: ./parameterValueSender | ./parameterValueReceiver
+
+    - name: collect coverage
+      run: gcovr --gcov-exclude=".*Test.*" --gcov-exclude=".*catch.*" -r . --html --html-details -o coverage.html --print-summary
+
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v2
+      with:
+        name: coverage
+        path: ./*.html
+        retention-days: 21
